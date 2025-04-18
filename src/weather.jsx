@@ -4,13 +4,14 @@ import React, { useState, useEffect, use } from 'react';
 const Weatherapp=()=>{
   const[city,setcity]=useState('')
   const[weather,setweather]=useState(null)
-  const APIkey = 'db6089b5d68392b9baba26c2061a1776';
+  // const APIkey = 'db6089b5d68392b9baba26c2061a1776';
+  const apiKey = 'b1d0579d30c58c38b4ab1543c5044ebe';
   useEffect(()=>{
     if (city=='') 
       return;
     const fetchingWeather=async()=>{
       try{
-        const response=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}&units=metric`)
+        const response=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
         const data=await response.json()
         console.log(data)
         setweather(data)}

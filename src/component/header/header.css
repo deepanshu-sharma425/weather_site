@@ -1,24 +1,26 @@
 .header{
     margin-bottom: 10px;
-    height: 50px;
+    height: 90px;
     display: flex;
     flex-direction: row;
-    margin:10px 10px;
+    margin:20px;
     padding: 20px;
     justify-content: space-between;
-    width: 95vw;
+    width: 97vw;
     background-color:rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.4);
     border-radius: 30px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-90%);
+    animation: slide-up 1s ease forwards;
 
 }
 .headerlogoimg{
     display: flex;
     margin: 10px;
-    gap: 30px;
+    gap: 10px;
     transition:transform 0.5s ease;
 
 }
@@ -36,10 +38,12 @@
 }
 .headerlogoimg p{
     font-size: 30px;
-    position: relative;
-    bottom: 22px;
+    /* position: relative;
+    bottom: 22px; */
 }
 .fetchingautoloco{
+    position: relative;
+    top: 10px;
     display: flex;
     gap: 8px;
     color: white;
@@ -49,15 +53,15 @@
 .fetchingautoloco img{
     height: 30px;
     width: 30px;
-    position: relative;
-    top: 23px;
+    /* position: relative;
+    top: 23px; */
 
 
 }
 .fetchingautoloco p{
     font-size: 30px;
-    position: relative;
-    bottom: 8px;
+    /* position: relative;
+    bottom: 8px; */
   
 }
 .inputbox{

@@ -2,7 +2,7 @@ import {useState } from 'react'
 import Weatherapp from './weather'
 import './App.css'
 import Header from './component/header/header'
-
+import Dashboard from './component/maindashboard/dashboard'
 
 function App() {
 
@@ -10,6 +10,9 @@ function App() {
   return (
     <div>
       <Header/>
+      <Dashboard/>
+
+
 
 
       

@@ -8,7 +8,11 @@ function Header({oncitychange}) {
     function handlechange(e){
         const value=e.target.value
         setcity(value)
-        oncitychange(value)
+        
+    }
+    function imageclick(){
+        if(city.trim()
+        ){oncitychange(city)}
     }
   return (
     <>
@@ -19,8 +23,14 @@ function Header({oncitychange}) {
         </div>
 
         <div className="inputbox">
-            <input type="text" placeholder='Enter the City name' value={city} onChange={handlechange}/>
-            <img src="../../../public/search.png" alt="" />
+            <input type="text" placeholder='Enter the City name' value={city} onChange={handlechange}
+            onKeyDown={(e)=>{
+                if(e.key==='Enter'){
+                    imageclick()
+                }
+            }}
+            />
+            <img src="../../../public/search.png" alt="" onClick={imageclick}/>
         </div>
 
         <div className="fetchingautoloco">

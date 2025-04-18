@@ -1,6 +1,7 @@
-import { use, useState } from 'react'
-
+import {useState } from 'react'
+import Weatherapp from './weather'
 import './App.css'
+import Header from './component/header/header'
 
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
 
   return (
     <div>
+      <Header/>
+
 
       
         

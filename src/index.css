@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=DotGothic16&family=Playwrite+AU+SA:wght@100..400&display=swap');
+*{
+    * {
+  font-family: 'Archivo', sans-serif; /* or 'DotGothic16', or 'Playwrite AU SA' */
+}
+
+}
+body{
+    height: 100vh;
+    background-image: radial-gradient(circle 382px at 50% 50.2%,rgba(73,76,212,1)0.1%,rgba(3,1,50,1)100.2%);
+}
+input{border: none;}

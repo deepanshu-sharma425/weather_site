@@ -1,0 +1,102 @@
+.header{
+    margin-bottom: 10px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    margin:10px 10px;
+    padding: 20px;
+    justify-content: space-between;
+    width: 95vw;
+    background-color:rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+
+}
+.headerlogoimg{
+    display: flex;
+    margin: 10px;
+    gap: 30px;
+    transition:transform 0.5s ease;
+
+}
+.headerlogoimg:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+.headerlogoimg{
+    color: white;
+}
+.headerlogoimg img{
+    height: 40px;
+    width: 40px;
+}
+.headerlogoimg p{
+    font-size: 30px;
+    position: relative;
+    bottom: 22px;
+}
+.fetchingautoloco{
+    display: flex;
+    gap: 8px;
+    color: white;
+    font-size: 30px;
+    transition:transform 0.5s ease;
+}
+.fetchingautoloco img{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 23px;
+
+
+}
+.fetchingautoloco p{
+    font-size: 30px;
+    position: relative;
+    bottom: 8px;
+  
+}
+.inputbox{
+    position: relative;
+    top: 20px;
+    padding: 2px;
+    display: flex;
+    border: 1px solid rgba(255,255,255,0.4);
+    background-color: rgb(89, 99, 137);
+    height: 28px;
+    width: 21vw;
+    border-radius: 30px;
+}
+.inputbox img{
+    width: 20px;height: 20px;
+ 
+  
+}
+.inputbox input{
+    color: aliceblue;
+    font-size: 20px;
+    height: 20px;
+    width: 18vw;
+    margin-left:10px;
+    background-color: rgb(89, 99, 137);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.fetchingautoloco:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    
+}
+.inputbox input::placeholder{
+    font-size: large;
+    color: aliceblue;
+}
+.inputbox input:focus {
+    outline: none;      
+    border: none;      
+    box-shadow: none;   
+  }

@@ -22,7 +22,6 @@ function Dashboard({ city }) {
           setError('City not found');
           return;
         }
-
         setWeather(data);
         console.log(data);
         setError('');
@@ -31,21 +30,18 @@ function Dashboard({ city }) {
         setError('Something went wrong');
       }
     };
-
     dataFetching();
   }, [city]);
-
-
   function getWeatherImage(condition) {
-    if (!condition) return ; 
+    if (!condition) return 'default.png';
     const main = condition.toLowerCase();
-  
+
     if (main.includes('cloud')) return 'cloudy.png';
     if (main.includes('rain')) return 'rain.png';
     if (main.includes('clear')) return 'sunny.png';
     if (main.includes('snow')) return 'snow.png';
     if (main.includes('thunderstorm')) return 'thunder.png';
-  
+
     return 'default.png';
   }
   function Nextday(props) {
@@ -83,12 +79,12 @@ function Dashboard({ city }) {
     <>
       <div className="tempdisplayinfo">
         <div className="tempinfo">
-        <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="weather icon" />
+          <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="" />
           <div className="locoinfotemp">
             <div className="lococloudy">
-              <h2>{weather ? `${weather.name}, ${weather.sys.country}` : '---'}</h2>
+              <h2>{weather ? `${weather.name}, ${weather.sys.country}` : ''}</h2>
               <br />
-              <p>{weather ? `${weather.weather[0].description}` : 'Fetching weather...'}</p>
+              <p>{weather ? `${weather.weather[0].description}` : ''}</p>
             </div>
             <div className="tempdisplay">
               {weather ? (
@@ -97,7 +93,7 @@ function Dashboard({ city }) {
                   <h2>°</h2>
                 </>
               ) : (
-                <h3>Loading...</h3>
+                <h3></h3>
               )}
             </div>
           </div>
@@ -120,19 +116,19 @@ function Dashboard({ city }) {
           <Smallbox
             image="/humidity.png"
             infoname="Humidity"
-            about={weather ? `${weather.main.humidity}` : '--'}
+            about={weather ? `${weather.main.humidity}` : ''}
             symbol="%"
           />
           <Smallbox
             image="/temp.png"
             infoname="Feels Like"
-            about={weather ? `${(weather.main.feels_like)}` : '--'}
+            about={weather ? `${(weather.main.feels_like)}` : ''}
             symbol="°"
           />
           <Smallbox
             image="/pressure.png"
             infoname="Pressure"
-            about={weather ? `${weather.main.pressure}` : '--'}
+            about={weather ? `${weather.main.pressure}` : ''}
             symbol="hPa"
           />
         </div>
@@ -143,19 +139,19 @@ function Dashboard({ city }) {
           <Smallbox
             image="/humidity.png"
             infoname="Min Temp"
-            about={weather ? `${Math.round(weather.main.temp_min)}` : '--'}
+            about={weather ? `${Math.round(weather.main.temp_min)}` : ''}
             symbol="°"
           />
           <Smallbox
             image="/humidity.png"
             infoname="Max Temp"
-            about={weather ? `${Math.round(weather.main.temp_max)}` : '--'}
+            about={weather ? `${Math.round(weather.main.temp_max)}` : ''}
             symbol="°"
           />
           <Smallbox
             image="/windspeed1.png"
             infoname="Wind Speed"
-            about={weather ? `${weather.wind.speed}` : '--'}
+            about={weather ? `${weather.wind.speed}` : ''}
             symbol="m/s"
           />
         </div>

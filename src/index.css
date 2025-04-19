@@ -19,3 +19,15 @@ input{border: none;}
     opacity: 1;
   }
 }
+@keyframes slide-left{
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-right{
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -38,8 +38,7 @@
 }
 .headerlogoimg p{
     font-size: 30px;
-    /* position: relative;
-    bottom: 22px; */
+   
 }
 .fetchingautoloco{
     position: relative;
@@ -53,16 +52,13 @@
 .fetchingautoloco img{
     height: 30px;
     width: 30px;
-    /* position: relative;
-    top: 23px; */
+  
 
 
 }
 .fetchingautoloco p{
     font-size: 30px;
-    /* position: relative;
-    bottom: 8px; */
-  
+    
 }
 .inputbox{
     position: relative;

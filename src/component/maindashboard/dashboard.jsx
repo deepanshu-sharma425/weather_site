@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
+import ErrorPage from '../error/error';
 
 function Dashboard({ city,setLoading }) {
   const [weather, setWeather] = useState(null);
@@ -120,6 +121,9 @@ function Dashboard({ city,setLoading }) {
         </div>
       </div>
     );
+  }
+  if(error){
+    return(<ErrorPage/>)
   }
 
   return (

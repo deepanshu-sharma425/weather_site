@@ -1,0 +1,26 @@
+
+.errorpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    color: #ff4d4f;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .errorpage h1 {
+    font-size: 3rem;
+  }
+  
+  .errorpage p {
+    font-size: 1.3rem;
+    margin: 20px 0;
+  }
+  
+  .errorimage {
+    width: 200px;
+    margin-top: 20px;
+  }
+  

@@ -1,11 +1,14 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import './dashboard.css';
 
 function Dashboard({ city }) {
   const [weather, setWeather] = useState(null);
+  const [forecast,setforecast]=useState(null)
+
   const [error, setError] = useState('');
   const apiKey = 'b1d0579d30c58c38b4ab1543c5044ebe';
+  const[pollution,setpollution]=useState(null)
 
   useEffect(() => {
     if (city === '') return;
@@ -25,15 +28,35 @@ function Dashboard({ city }) {
         setWeather(data);
         console.log(data);
         setError('');
+        const{lat,lon}=data.coord
+        const weatherforecastres=await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+        const weatherforecastdata=await weatherforecastres.json()
+        setpollution(weatherforecastdata)
+        console.log(weatherforecastdata);
+
+        const pollutiondatares=await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+        const pollutionresdata=await pollutiondatares.json()
+        setpollution(pollutionresdata)
+        console.log(pollutionresdata)
+
       } catch (err) {
         console.error('Problem while fetching API', err);
         setError('Something went wrong');
+        const {lon,lat}=data.coord
+        console.log(lat)
+        console.log(lon)
+
+
       }
+      
+
+
+
     };
     dataFetching();
   }, [city]);
   function getWeatherImage(condition) {
-    if (!condition) return 'default.png';
+    if (!condition) return '';
     const main = condition.toLowerCase();
 
     if (main.includes('cloud')) return 'cloudy.png';
@@ -42,7 +65,7 @@ function Dashboard({ city }) {
     if (main.includes('snow')) return 'snow.png';
     if (main.includes('thunderstorm')) return 'thunder.png';
 
-    return 'default.png';
+    
   }
   function Nextday(props) {
     return (
@@ -79,7 +102,8 @@ function Dashboard({ city }) {
     <>
       <div className="tempdisplayinfo">
         <div className="tempinfo">
-          <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="" />
+
+          {weather? <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="" />:''}
           <div className="locoinfotemp">
             <div className="lococloudy">
               <h2>{weather ? `${weather.name}, ${weather.sys.country}` : ''}</h2>
@@ -122,7 +146,7 @@ function Dashboard({ city }) {
           <Smallbox
             image="/temp.png"
             infoname="Feels Like"
-            about={weather ? `${(weather.main.feels_like)}` : ''}
+            about={weather ? `${(weather.main.feels_like)},°` : ''}
             symbol="°"
           />
           <Smallbox

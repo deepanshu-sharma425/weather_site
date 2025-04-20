@@ -17,7 +17,7 @@
     animation: spin 1s linear infinite;
   }
   
-  /* Optional spinner animation if using an SVG or div instead of GIF */
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -35,8 +35,10 @@
   }
   
   
-  body {
-    height: 100vh;
+  .body {
+    height:100vh;
+    margin: 0;
+    padding: 0;
     background-image: radial-gradient(circle 382px at 50% 50.2%, rgba(73, 76, 212, 1)0.1%, rgba(3, 1, 50, 1)100.2%);
   }
   

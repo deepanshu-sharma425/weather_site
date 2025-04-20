@@ -1,7 +1,6 @@
 .tempdisplayinfo{
     box-sizing: border-box;
-    display: flex;
-    
+    display: flex;  
     color: white;
     margin-bottom: 10px; 
     display: flex;

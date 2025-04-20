@@ -12,7 +12,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='body'>
 
       {loading && (
         <div className="fullscreen-loader">

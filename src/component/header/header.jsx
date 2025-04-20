@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import './header.css'
 import Dashboard from '../maindashboard/dashboard'
-
-
+import searchIcon from '../../assets/search.png';
+import logo from '../../assets/logo.png'
 
 function Header({oncitychange}) {
     const[city,setcity]=useState('')
@@ -19,7 +19,7 @@ function Header({oncitychange}) {
     <>
     <div className="header">
         <div className="headerlogoimg">
-            <img src='../../../public/logo.png' alt="logo image" />
+            <img src={logo} alt="logo image" />
             <p>ForecastFlow</p>
         </div>
 
@@ -31,12 +31,11 @@ function Header({oncitychange}) {
                 }
             }}
             />
-            <img src="../../../public/search.png" alt="" onClick={imageclick}/>
+            <img src={searchIcon} alt="" onClick={imageclick}/>
         </div>
 
         <div className="fetchingautoloco">
-            <img src="../../../public/location.png" alt="" />
-           <p>Location</p>
+           
         </div>
 
     </div>

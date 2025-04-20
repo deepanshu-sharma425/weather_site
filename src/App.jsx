@@ -5,7 +5,7 @@ import Dashboard from './component/maindashboard/dashboard';
 
 function App() {
   const [selectedcity, setselectedcity] = useState('');
-  const [loading, setLoading] = useState(false); // ⬅️ Add this
+  const [loading, setLoading] = useState(false);
 
   function handlecitychange(cityname) {
     setselectedcity(cityname);
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      {/* Full-screen loader */}
+
       {loading && (
         <div className="fullscreen-loader">
           <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." className="loading-spinner" />

@@ -27,6 +27,12 @@ input {
   }
 }
 
+@keyframes slide-down{
+  100%{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 @keyframes slide-left {
   100% {
     transform: translateY(0);

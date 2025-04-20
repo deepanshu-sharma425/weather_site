@@ -134,9 +134,34 @@
 }
 .onemorecontainer{
     display: flex;
+
+
 }
+
+
 .small h1{
     font-size: 20px;
     position: relative;
     top: 10px;
 }
+.nextdayimgday img{
+    outline: transparent;
+}
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+  
+  .loading-spinner {
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  

@@ -2,9 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 
-function Dashboard({ city }) {
+function Dashboard({ city,setLoading }) {
   const [weather, setWeather] = useState(null);
   const [forecast, setforecast] = useState(null)
+
+  
+
+
 
   const [error, setError] = useState('');
   const apiKey = 'b1d0579d30c58c38b4ab1543c5044ebe';
@@ -12,48 +16,47 @@ function Dashboard({ city }) {
 
   useEffect(() => {
     if (city === '') return;
-
+  
     const dataFetching = async () => {
       try {
+        setLoading(true); // ⬅️ Start the loader
+  
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         );
         const data = await response.json();
-
+  
         if (data.cod !== 200) {
           setWeather(null);
           setError('City not found');
+          setLoading(false); // ⬅️ Stop loader if error
           return;
         }
+  
         setWeather(data);
-        console.log(data);
         setError('');
-        const { lat, lon } = data.coord
-        const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
-        const weatherforecastdata = await weatherforecastres.json()
-        setforecast(weatherforecastdata)
-        console.log(weatherforecastdata);
-
-        const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-        const pollutionresdata = await pollutiondatares.json()
-        setpollution(pollutionresdata)
-        console.log(pollutionresdata)
-
+  
+        const { lat, lon } = data.coord;
+  
+        const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
+        const weatherforecastdata = await weatherforecastres.json();
+        setforecast(weatherforecastdata);
+  
+        const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+        const pollutionresdata = await pollutiondatares.json();
+        setpollution(pollutionresdata);
+  
       } catch (err) {
         console.error('Problem while fetching API', err);
         setError('Something went wrong');
-
-
-
-
+      } finally {
+        setLoading(false); // ⬅️ Ensure it hides no matter what
       }
-
-
-
-
     };
+  
     dataFetching();
   }, [city]);
+  
   function getWeatherImage(condition) {
     if (!condition) return 'default1.png';
     const main = condition.toLowerCase();
@@ -87,11 +90,12 @@ function Dashboard({ city }) {
   }
 
 
+
   function Nextday(props) {
     return (
       <div className="nextday">
         <div className="nextdayimgday">
-          <img src={props.image} alt="" />
+          <img src={props.image} alt={props.textt} />
           <br />
           <br />
           <h4>{props.date}</h4>
@@ -99,7 +103,7 @@ function Dashboard({ city }) {
         </div>
         <div className="nextdayday">
           <h1>{props.nextdaytemp}</h1>
-          {/* <h2>°</h2> */}
+
         </div>
       </div>
     );
@@ -145,7 +149,8 @@ function Dashboard({ city }) {
 
         <div className="additional">
           <Nextday
-            image={forecast && forecast.list[6] ? `/${getWeatherImage(forecast.list[6].weather[0].main)}` : ''}
+            image={forecast && forecast.list[6] ? `${getWeatherImage(forecast.list[6].weather[0].main)}` : ''}
+
             date={forecast && forecast.list[6] ? new Date(forecast.list[6].dt * 1000).toLocaleDateString() : ''}
             weathertype={forecast && forecast.list[6] ? forecast.list[6].weather[0].main : ''}
             nextdaytemp={forecast && forecast.list[6] ? `${Math.floor(forecast.list[6].main.temp)} °C` : ''}

@@ -86,12 +86,8 @@ function Dashboard({ city,setLoading }) {
         return { level: "Very Poor", color: "#660099" };
       default:
         return { level: "Unknown", color: "#999999" };
-
     }
   }
-
-
-
   function Nextday(props) {
     return (
       <div className="nextday">
@@ -109,7 +105,6 @@ function Dashboard({ city,setLoading }) {
       </div>
     );
   }
-
   function Smallbox(props) {
     return (
       <div className="small">
@@ -198,8 +193,6 @@ function Dashboard({ city,setLoading }) {
               about={weather ? `${(weather.main.feels_like)} °C` : ''}
               symbol=""
             />
-
-
           </div>
           <br />
           <br />
@@ -214,19 +207,9 @@ function Dashboard({ city,setLoading }) {
               image="/windspeed1.png"
               infoname="Wind Speed"
               about={weather ? `${weather.wind.speed} m/s` : ''}
-
             />
-
           </div>
-
-
-
         </div>
-
-
-
-
-
         <div className="moreinfoweather">
           <h1>Air Quality</h1>
           <br />
@@ -246,14 +229,8 @@ function Dashboard({ city,setLoading }) {
                 } µg/m³` : ''}
               symbol=""
             />
-
-
-
-
           </div>
-
           <br />
-
           <div className="moreinfoweatherblock1">
             <Smallbox
               image="/pm10.png"
@@ -267,14 +244,11 @@ function Dashboard({ city,setLoading }) {
               about={pollution ? `${pollution?.list?.[0]?.components?.pm2_5} µg/m³` : ''}
               symbol=""
             />
-
           </div>
         </div>
       </div>
-
       {error && <p className="error-message">{error}</p>}
     </>
   );
 }
-
 export default Dashboard;

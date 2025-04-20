@@ -102,3 +102,28 @@
     border: none;      
     box-shadow: none;   
   }
+  @media(max-width:1039px){
+    .inputbox img{
+        display: none;
+    }
+  }
+  @media(max-width:959px){
+    .inputbox{
+        position: relative;
+        left: 200px;
+    }
+  }
+  @media(max-width:869px){
+    .inputbox{
+        position: relative;
+        left: 80px;
+    }
+    .headerlogoimg p{
+        font-size: 25px;
+    }
+    .headerlogoimg img{
+        width: 25px;
+        height: 25px;
+    }
+  }
+  

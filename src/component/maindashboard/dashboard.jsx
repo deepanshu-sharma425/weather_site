@@ -21,11 +21,11 @@ import temp from '../../assets/temp.png';
 
 
 
-function Dashboard({ city,setLoading }) {
+function Dashboard({ city, setLoading }) {
   const [weather, setWeather] = useState(null);
   const [forecast, setforecast] = useState(null)
 
-  
+
 
 
 
@@ -35,57 +35,57 @@ function Dashboard({ city,setLoading }) {
 
   useEffect(() => {
     if (city === '') return;
-  
+
     const dataFetching = async () => {
       try {
-        setLoading(true); 
-  
+        setLoading(true);
+
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         );
         const data = await response.json();
-  
+
         if (data.cod !== 200) {
           setWeather(null);
           setError('City not found');
           setLoading(false);
           return;
         }
-  
+
         setWeather(data);
         setError('');
-  
+
         const { lat, lon } = data.coord;
-  
+
         const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
         const weatherforecastdata = await weatherforecastres.json();
         setforecast(weatherforecastdata);
-  
+
         const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`);
         const pollutionresdata = await pollutiondatares.json();
         setpollution(pollutionresdata);
-  
+
       } catch (err) {
         console.error('Problem while fetching API', err);
         setError('Something went wrong');
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
-  
+
     dataFetching();
   }, [city]);
-  
+
   function getWeatherImage(condition) {
     if (!condition) return defaultImg;
     const main = condition.toLowerCase();
-  
+
     if (main.includes('cloud')) return cloudy;
     if (main.includes('rain')) return rain;
     if (main.includes('clear')) return clear;
     if (main.includes('snow')) return snow;
     if (main.includes('thunder')) return thunder;
-  
+
     return defaultImg;
 
 
@@ -136,17 +136,15 @@ function Dashboard({ city,setLoading }) {
       </div>
     );
   }
-  if(error){
-    return(<ErrorPage/>)
+  if (error) {
+    return (<ErrorPage />)
   }
 
   return (
     <>
       <div className="tempdisplayinfo">
         <div className="tempinfo">
-
-        {weather ? <img src={getWeatherImage(weather?.weather?.[0]?.main)} alt="" /> : ''}
-
+          {weather ? <img src={getWeatherImage(weather?.weather?.[0]?.main)} alt="" /> : ''}
           <div className="locoinfotemp">
             <div className="lococloudy">
               <h2>{weather ? `${weather.name}, ${weather.sys.country}` : ''}</h2>

@@ -24,7 +24,7 @@ function Header({oncitychange}) {
         </div>
 
         <div className="inputbox">
-            <input type="text" placeholder='Enter the City name' value={city} onChange={handlechange}
+            <input type="text" placeholder='City name' value={city} onChange={handlechange}
             onKeyDown={(e)=>{
                 if(e.key==='Enter'){
                     imageclick()

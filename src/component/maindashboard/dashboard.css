@@ -38,6 +38,7 @@
 
 }
 .nextday{
+
     background-color: white;
     color: black;
     display: flex;
@@ -163,4 +164,182 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  
+  @media(max-width:1142px){
+    .nextday{
+        width: 15vw;
+    }
+    .tempinfo{
+        width: 20vw;
+    }
+    .tempdisplay h1,h2{
+        font-size: 22px;
+    }
+    .small{
+        width: 18vw;
+    }
+    
+  }
+  @media(max-width:1058px){
+    .tempdisplay{
+        width: 12vw;
+
+    }
+    .nextday{
+        width:15vw ;
+    }
+    .nextday img{
+        height: 30px;
+        width: 30px;
+    }
+    .nextday h1{
+        font-size: 20px;
+    }
+  }
+  @media(max-width:1039px){
+    .tempinfo{
+        width: 10vw;
+    }
+    .tempinfo img{
+        height: 45px;
+    width: 45px;    }
+    .tempdisplay h1{
+        font-size: 20px;
+        position: relative;
+        right: 40px;
+    }
+    .tempdisplay h2{
+        font-size: 20px;
+        position: relative;
+        right: 40px;
+    }
+  }
+  @media(max-width:1035px){
+    .small img{
+        height: 20px;
+        width: 20px;
+    }
+    .small h1{
+        font-size: 15px;
+    }
+    .nextday h1{
+        position: relative;
+        right: 50px;
+    }
+    .small h4{
+        font-size: 15px;
+    }
+    
+  }
+  @media(max-width:924px){
+    .tempinfo h1,h2{
+        font-size: 15px;
+    }
+  }
+  @media(max-width:866px){
+    .tempinfo img{
+        position: relative;
+        right: 40px;
+    }
+  }
+  @media(max-width:812px){
+    .moreinfoweatherblock1{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .small{
+        width: 25vw;
+    }
+    .small img{
+        height: 40px;
+        width: 40px;
+    }
+
+
+  }
+  @media(max-width:775px){
+    .tempdisplayinfo{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .tempinfo{
+        width: 30vw;
+        position: relative;
+        left: 240px;
+
+    }
+    .tempinfo h{
+        width: 30vw;
+        
+    }
+    .tempinfo h1,h2{
+        font-size: 23px;
+    }
+    .tempinfo img{
+        width: 80px;
+        height: 80px;
+    }
+    .nextday{
+        width: 19vw;
+    }
+  }
+  @media(max-width:629px){
+    .tempinfo{
+        position: relative;
+        right: 50px;
+    }
+    .small img{
+        width: 20px;
+        height: 20px;
+    }
+  }
+  @media(max-width:616px){
+    .additional{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .nextday{
+        width: 35vw;
+        position: relative;
+        left: 170px;
+
+    }
+    .nextday img{
+        height: 40px;
+        width: 40px;
+    }
+    .nextday h1{
+        position: relative;
+        left: 25px;
+    }
+   
+
+  }
+  @media(max-width:585px){
+   
+    .nextdayday{
+        position: relative;
+        right: 30px;
+    }
+  }
+  @media(max-width:580px){
+    .tempinfo{
+        position: relative;
+        right: 60px;
+       
+    }
+    .small{
+        display: flex;
+        flex-direction: column;
+        width: 30vw;
+        
+    }
+  }
+@media(max-width:575px){
+    .locoinfotemp h1,h2,h3,h4,h5{
+        position: relative;
+        right:50px
+    }
+}

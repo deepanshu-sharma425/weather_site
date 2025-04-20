@@ -65,6 +65,9 @@
     display: flex;
     gap: px;
 }
+.nextdayday h1{
+    font-size: 22px;
+}
 .nextdayday h2{
     position: relative;
     bottom: 10px;

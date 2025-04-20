@@ -1,14 +1,14 @@
 
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 
 function Dashboard({ city }) {
   const [weather, setWeather] = useState(null);
-  const [forecast,setforecast]=useState(null)
+  const [forecast, setforecast] = useState(null)
 
   const [error, setError] = useState('');
   const apiKey = 'b1d0579d30c58c38b4ab1543c5044ebe';
-  const[pollution,setpollution]=useState(null)
+  const [pollution, setpollution] = useState(null)
 
   useEffect(() => {
     if (city === '') return;
@@ -28,27 +28,26 @@ function Dashboard({ city }) {
         setWeather(data);
         console.log(data);
         setError('');
-        const{lat,lon}=data.coord
-        const weatherforecastres=await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
-        const weatherforecastdata=await weatherforecastres.json()
-        setpollution(weatherforecastdata)
+        const { lat, lon } = data.coord
+        const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+        const weatherforecastdata = await weatherforecastres.json()
+        setforecast(weatherforecastdata)
         console.log(weatherforecastdata);
 
-        const pollutiondatares=await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-        const pollutionresdata=await pollutiondatares.json()
+        const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+        const pollutionresdata = await pollutiondatares.json()
         setpollution(pollutionresdata)
         console.log(pollutionresdata)
 
       } catch (err) {
         console.error('Problem while fetching API', err);
         setError('Something went wrong');
-        const {lon,lat}=data.coord
-        console.log(lat)
-        console.log(lon)
+
+
 
 
       }
-      
+
 
 
 
@@ -56,7 +55,7 @@ function Dashboard({ city }) {
     dataFetching();
   }, [city]);
   function getWeatherImage(condition) {
-    if (!condition) return '';
+    if (!condition) return 'default1.png';
     const main = condition.toLowerCase();
 
     if (main.includes('cloud')) return 'cloudy.png';
@@ -64,9 +63,30 @@ function Dashboard({ city }) {
     if (main.includes('clear')) return 'sunny.png';
     if (main.includes('snow')) return 'snow.png';
     if (main.includes('thunderstorm')) return 'thunder.png';
+    return 'default1.png';
 
-    
+
+
   }
+  function aqihandle(aqi) {
+    switch (aqi) {
+      case 1:
+        return { level: "Good", color: "#009966" };
+      case 2:
+        return { level: "Fair", color: "#ffde33" };
+      case 3:
+        return { level: "Moderate", color: "#ff9933" };
+      case 4:
+        return { level: "Poor", color: "#cc0033" };
+      case 5:
+        return { level: "Very Poor", color: "#660099" };
+      default:
+        return { level: "Unknown", color: "#999999" };
+
+    }
+  }
+
+
   function Nextday(props) {
     return (
       <div className="nextday">
@@ -74,12 +94,12 @@ function Dashboard({ city }) {
           <img src={props.image} alt="" />
           <br />
           <br />
-          <h4>{props.day}</h4>
+          <h4>{props.date}</h4>
           <h5 className="hello">{props.weathertype}</h5>
         </div>
         <div className="nextdayday">
           <h1>{props.nextdaytemp}</h1>
-          <h2>°</h2>
+          {/* <h2>°</h2> */}
         </div>
       </div>
     );
@@ -103,7 +123,7 @@ function Dashboard({ city }) {
       <div className="tempdisplayinfo">
         <div className="tempinfo">
 
-          {weather? <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="" />:''}
+          {weather ? <img src={`../../../public/${getWeatherImage(weather?.weather?.[0]?.main)}`} alt="" /> : ''}
           <div className="locoinfotemp">
             <div className="lococloudy">
               <h2>{weather ? `${weather.name}, ${weather.sys.country}` : ''}</h2>
@@ -124,10 +144,30 @@ function Dashboard({ city }) {
         </div>
 
         <div className="additional">
-          <Nextday image="/rain.png" day="Saturday" weathertype="Rainy" nextdaytemp="20" />
-          <Nextday image="/rain.png" day="Sunday" weathertype="Rainy" nextdaytemp="21" />
-          <Nextday image="/rain.png" day="Monday" weathertype="Rainy" nextdaytemp="19" />
-          <Nextday image="/rain.png" day="Tuesday" weathertype="Rainy" nextdaytemp="22" />
+          <Nextday
+            image={forecast && forecast.list[6] ? `/${getWeatherImage(forecast.list[6].weather[0].main)}` : ''}
+            date={forecast && forecast.list[6] ? new Date(forecast.list[6].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[6] ? forecast.list[6].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[6] ? `${Math.floor(forecast.list[6].main.temp)} °C` : ''}
+          />
+          <Nextday
+            image={forecast && forecast.list[10] ? `/${getWeatherImage(forecast.list[10].weather[0].main)}` : ''}
+            date={forecast && forecast.list[10] ? new Date(forecast.list[10].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[10] ? forecast.list[10].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[10] ? `${Math.floor(forecast.list[10].main.temp)} °C` : ''}
+          />
+          <Nextday
+            image={forecast && forecast.list[18] ? `/${getWeatherImage(forecast.list[18].weather[0].main)}` : ''}
+            date={forecast && forecast.list[18] ? new Date(forecast.list[18].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[18] ? forecast.list[18].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[18] ? `${Math.floor(forecast.list[18].main.temp)} °C` : ''}
+          />
+          <Nextday
+            image={forecast && forecast.list[32] ? `/${getWeatherImage(forecast.list[32].weather[0].main)}` : ''}
+            date={forecast && forecast.list[32] ? new Date(forecast.list[32].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[32] ? forecast.list[32].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[32] ? `${Math.floor(forecast.list[32].main.temp)} °C` : ''}
+          />
         </div>
       </div>
 
@@ -140,20 +180,20 @@ function Dashboard({ city }) {
           <Smallbox
             image="/humidity.png"
             infoname="Humidity"
-            about={weather ? `${weather.main.humidity}` : ''}
-            symbol="%"
+            about={weather ? `${weather.main.humidity} %` : ''}
+            symbol=""
           />
           <Smallbox
             image="/temp.png"
             infoname="Feels Like"
-            about={weather ? `${(weather.main.feels_like)},°` : ''}
-            symbol="°"
+            about={weather ? `${(weather.main.feels_like)} °C` : ''}
+            symbol=""
           />
           <Smallbox
             image="/pressure.png"
             infoname="Pressure"
-            about={weather ? `${weather.main.pressure}` : ''}
-            symbol="hPa"
+            about={weather ? `${weather.main.pressure} hpa` : ''}
+            symbol=""
           />
         </div>
 
@@ -161,22 +201,22 @@ function Dashboard({ city }) {
 
         <div className="moreinfoweatherblock1">
           <Smallbox
-            image="/humidity.png"
-            infoname="Min Temp"
-            about={weather ? `${Math.round(weather.main.temp_min)}` : ''}
-            symbol="°"
+            image="/aqi.png"
+            infoname="AQI"
+            about={pollution ? aqihandle(pollution.list[0].main.aqi).level : ''}
+            symbol=""
           />
           <Smallbox
-            image="/humidity.png"
-            infoname="Max Temp"
-            about={weather ? `${Math.round(weather.main.temp_max)}` : ''}
-            symbol="°"
+            image="/pm2.5.png"
+            infoname="PM 2.5"
+            about={pollution ? `${pollution?.list?.[0]?.components?.pm2_5} µg/m³` : ''}
+            symbol=""
           />
           <Smallbox
             image="/windspeed1.png"
             infoname="Wind Speed"
-            about={weather ? `${weather.wind.speed}` : ''}
-            symbol="m/s"
+            about={weather ? `${weather.wind.speed} m/s` : ''}
+
           />
         </div>
       </div>

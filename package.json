@@ -1,6 +1,6 @@
 {
-  "homepage": "https://(deepanshu-sharma425).github.io/(weather_site)",
-  "name": "d",
+  "homepage": "https://deepanshu-sharma425.github.io/weather_site",
+  "name": "weather_site",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.0.0",

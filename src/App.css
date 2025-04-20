@@ -35,12 +35,13 @@
   }
   
   
-  .body body, html, #root{
-    height:100vh;
+  body, html, #root {
+    height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: radial-gradient(circle 382px at 50% 50.2%, rgba(73, 76, 212, 1)0.1%, rgba(3, 1, 50, 1)100.2%);
+    background-image: radial-gradient(circle 382px at 50% 50.2%, rgba(73, 76, 212, 1) 0.1%, rgba(3, 1, 50, 1) 100.2%);
   }
+  
   
   input {
     border: none;

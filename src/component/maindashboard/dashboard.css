@@ -132,5 +132,11 @@
 .small:hover{
     transform: scale(1.1);
 }
-
-
+.onemorecontainer{
+    display: flex;
+}
+.small h1{
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+}

@@ -171,53 +171,95 @@ function Dashboard({ city }) {
         </div>
       </div>
 
-      <div className="moreinfoweather">
-        <h1>Today's Highlights</h1>
-        <br />
-        <br />
+      <div className="onemorecontainer">
+        <div className="moreinfoweather">
+          <h1>Today's Highlights</h1>
+          <br />
+          <br />
+          <div className="moreinfoweatherblock1">
+            <Smallbox
+              image="/humidity.png"
+              infoname="Humidity"
+              about={weather ? `${weather.main.humidity} %` : ''}
+              symbol=""
+            />
+            <Smallbox
+              image="/temp.png"
+              infoname="Feels Like"
+              about={weather ? `${(weather.main.feels_like)} °C` : ''}
+              symbol=""
+            />
 
-        <div className="moreinfoweatherblock1">
-          <Smallbox
-            image="/humidity.png"
-            infoname="Humidity"
-            about={weather ? `${weather.main.humidity} %` : ''}
-            symbol=""
-          />
-          <Smallbox
-            image="/temp.png"
-            infoname="Feels Like"
-            about={weather ? `${(weather.main.feels_like)} °C` : ''}
-            symbol=""
-          />
-          <Smallbox
-            image="/pressure.png"
-            infoname="Pressure"
-            about={weather ? `${weather.main.pressure} hpa` : ''}
-            symbol=""
-          />
+
+          </div>
+          <br />
+          <br />
+          <div className="moreinfoweatherblock1">
+            <Smallbox
+              image="/pressure.png"
+              infoname="Pressure"
+              about={weather ? `${weather.main.pressure} hpa` : ''}
+              symbol=""
+            />
+            <Smallbox
+              image="/windspeed1.png"
+              infoname="Wind Speed"
+              about={weather ? `${weather.wind.speed} m/s` : ''}
+
+            />
+
+          </div>
+
+
+
         </div>
 
-        <br />
 
-        <div className="moreinfoweatherblock1">
-          <Smallbox
-            image="/aqi.png"
-            infoname="AQI"
-            about={pollution ? aqihandle(pollution.list[0].main.aqi).level : ''}
-            symbol=""
-          />
-          <Smallbox
-            image="/pm2.5.png"
-            infoname="PM 2.5"
-            about={pollution ? `${pollution?.list?.[0]?.components?.pm2_5} µg/m³` : ''}
-            symbol=""
-          />
-          <Smallbox
-            image="/windspeed1.png"
-            infoname="Wind Speed"
-            about={weather ? `${weather.wind.speed} m/s` : ''}
 
-          />
+
+
+        <div className="moreinfoweather">
+          <h1>Air Quality</h1>
+          <br />
+          <br />
+
+          <div className="moreinfoweatherblock1">
+            <Smallbox
+              image="/aqi.png"
+              infoname="AQI"
+              about={pollution ? aqihandle(pollution.list[0].main.aqi).level : ''}
+              symbol=""
+            />
+            <Smallbox
+              image="/ozone.png"
+              infoname="Ozone"
+              about={pollution ? `${pollution?.list?.[0]?.components?.o3
+                } µg/m³` : ''}
+              symbol=""
+            />
+
+
+
+
+          </div>
+
+          <br />
+
+          <div className="moreinfoweatherblock1">
+            <Smallbox
+              image="/pm10.png"
+              infoname="PM 10"
+              about={pollution ? `${pollution?.list?.[0]?.components?.pm10} µg/m³` : ''}
+              symbol=""
+            />
+            <Smallbox
+              image="/pm2.5.png"
+              infoname="PM 2.5"
+              about={pollution ? `${pollution?.list?.[0]?.components?.pm2_5} µg/m³` : ''}
+              symbol=""
+            />
+
+          </div>
         </div>
       </div>
 

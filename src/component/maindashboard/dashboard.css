@@ -363,8 +363,8 @@
     .onemorecontainer{
         display: flex;
         flex-direction: column;
-        position: relative;
-        right: 18px;
+        /* position: relative;
+        right: 18px; */
     }
     .moreinfoweather >h1{
         font-size: 20px;
@@ -448,7 +448,7 @@
         left: 0;
     }
 }
-@media(max-width:380px){
+/* @media(max-width:380px){
     .tempinfo,.nextday{
         position: relative;
         left: -1px;
@@ -462,9 +462,10 @@
         left: -40px;
     }
 
-}
-/* @media(max-width:400px){
-    .tempdisplayinfo{
-        width: 350px;
-    }
 } */
+@media(max-width:400px){
+    .moreinfoweather{
+       margin: 10px;
+    }
+    
+}

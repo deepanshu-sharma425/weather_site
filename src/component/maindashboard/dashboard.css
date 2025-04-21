@@ -324,22 +324,83 @@
         right: 30px;
     }
   }
-  @media(max-width:580px){
+  @media(max-width:575px){
     .tempinfo{
         position: relative;
-        right: 60px;
-       
+        left:180px
     }
-    .small{
-        display: flex;
-        flex-direction: column;
-        width: 30vw;
+
+  }
+@media(max-width:573px){
+    .nextday{
+        width: 38vw;
+    }
+    .small h1{
+        font-size: 14px;
         
     }
-  }
-@media(max-width:575px){
-    .locoinfotemp h1,h2,h3,h4,h5{
+    .nmnmn {
+        font-size: 12px;
+    }
+    .small img{
         position: relative;
-        right:50px
+        top: 5px;
+    }
+
+}
+@media(max-width:535px){
+    .tempdisplayinfo{
+        position: relative;
+        right:15px;
+    }
+    .tempinfo,.nextday{
+        position: relative;
+        left: 120px;
+    }
+}
+@media(max-width:513px){
+    .onemorecontainer{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        right: 18px;
+    }
+    .moreinfoweather >h1{
+        font-size: 20px;
+        text-align: center;
+    }
+    .moreinfoweatherblock1{
+        position: relative;
+        left: 120px;
+
+    }
+    .small{
+        width: 30vw;
+        height: 10vh;
+    }
+    .tempdisplayinfo,.moreinfoweather{
+        width: 116vw;
+    }
+
+
+}
+@media(max-width:483px){
+    .small{
+        width: 36vw;
+    }
+
+}
+@media(max-width:421px){
+    .small,.nextday{
+        width: 55vw;
+    }
+    .tempinfo{
+        position: relative;
+        left: 160px;
+    }
+}
+@media(max-width:480px){
+    .tempdisplayinfo{
+        width: 125vw;
     }
 }

@@ -126,4 +126,39 @@
         height: 25px;
     }
   }
+  @media(max-width:535px){
+    .header{
+        position: relative;
+        right: 10px;
+    }
+  }
+  @media(max-width:491px){
+    .inputbox{
+        position: relative;
+        left: -5px;
+        width: 25vw;
+        
+    }
+    .inputbox input{
+        width: 18vw;
+    }
+  }
+  @media(max-width:511px){
+    .header{
+        width: 120vw;
+    }
+  }
+  @media(max-width:447px){
+    .inputbox{
+        width: 30vw;
+
+        
+    }
+    .inputbox input{
+        width: 22vw;
+    }
+    .nextday{
+        width: 55vw;
+    }
+}
   

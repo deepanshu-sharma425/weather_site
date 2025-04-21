@@ -375,11 +375,11 @@
 
     }
     .small{
-        width: 30vw;
-        height: 10vh;
+        width: 40vw;
+        height: 15vh;
     }
     .tempdisplayinfo,.moreinfoweather{
-        width: 116vw;
+        width: 98vw;
     }
 
 
@@ -393,14 +393,31 @@
 @media(max-width:421px){
     .small,.nextday{
         width: 55vw;
-    }
-    .tempinfo{
         position: relative;
-        left: 160px;
+        left: 80px;
+    }
+    .small{
+        position: relative;
+        left:-40px;
     }
 }
 @media(max-width:480px){
     .tempdisplayinfo{
-        width: 125vw;
+        width: 100vw;
     }
+}
+@media(max-width:380px){
+    .tempinfo,.nextday{
+        position: relative;
+        left: -1px;
+    }
+    .small{
+        position: relative;
+        left: -110px;
+    }
+    .moreinfoweather>h1{
+        position: relative;
+        left: -40px;
+    }
+
 }

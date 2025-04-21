@@ -161,4 +161,25 @@
         width: 55vw;
     }
 }
+@media(max-width:513px){
+    .header{
+        width: 106vw;
+    }
+}
+@media(max-width:480px){
+    .header{
+        width: 100vw;
+    }
+}
+@media(max-width:380px){
+    .header p{
+        font-size: 20px;
+        
+    }
+    .inputbox{
+        width: 140px;
+        position: relative;
+        bottom: 10px;
+    }
+}
   

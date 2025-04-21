@@ -60,6 +60,7 @@ function Dashboard({ city, setLoading }) {
         const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
         const weatherforecastdata = await weatherforecastres.json();
         setforecast(weatherforecastdata);
+        console.log(weatherforecastdata)
 
         const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`);
         const pollutionresdata = await pollutiondatares.json();
@@ -166,30 +167,30 @@ function Dashboard({ city, setLoading }) {
 
         <div className="additional">
           <Nextday
-            image={forecast && forecast.list[6] ? getWeatherImage(forecast.list[6].weather[0].main) : ''}
+            image={forecast && forecast.list[5] ? getWeatherImage(forecast.list[5].weather[0].main) : ''}
 
 
-            date={forecast && forecast.list[6] ? new Date(forecast.list[6].dt * 1000).toLocaleDateString() : ''}
-            weathertype={forecast && forecast.list[6] ? forecast.list[6].weather[0].main : ''}
-            nextdaytemp={forecast && forecast.list[6] ? `${Math.floor(forecast.list[6].main.temp)} °C` : ''}
+            date={forecast && forecast.list[5] ? new Date(forecast.list[5].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[5] ? forecast.list[5].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[5] ? `${Math.floor(forecast.list[5].main.temp)} °C` : ''}
           />
           <Nextday
-            image={forecast && forecast.list[10] ? getWeatherImage(forecast.list[10].weather[0].main) : ''}
-            date={forecast && forecast.list[10] ? new Date(forecast.list[10].dt * 1000).toLocaleDateString() : ''}
-            weathertype={forecast && forecast.list[10] ? forecast.list[10].weather[0].main : ''}
-            nextdaytemp={forecast && forecast.list[10] ? `${Math.floor(forecast.list[10].main.temp)} °C` : ''}
+            image={forecast && forecast.list[13] ? getWeatherImage(forecast.list[13].weather[0].main) : ''}
+            date={forecast && forecast.list[13] ? new Date(forecast.list[13].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[13] ? forecast.list[13].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[13] ? `${Math.floor(forecast.list[13].main.temp)} °C` : ''}
           />
           <Nextday
-            image={forecast && forecast.list[18] ? getWeatherImage(forecast.list[18].weather[0].main) : ''}
-            date={forecast && forecast.list[18] ? new Date(forecast.list[18].dt * 1000).toLocaleDateString() : ''}
-            weathertype={forecast && forecast.list[18] ? forecast.list[18].weather[0].main : ''}
-            nextdaytemp={forecast && forecast.list[18] ? `${Math.floor(forecast.list[18].main.temp)} °C` : ''}
+            image={forecast && forecast.list[21] ? getWeatherImage(forecast.list[21].weather[0].main) : ''}
+            date={forecast && forecast.list[21] ? new Date(forecast.list[21].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[21] ? forecast.list[21].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[21] ? `${Math.floor(forecast.list[21].main.temp)} °C` : ''}
           />
           <Nextday
-            image={forecast && forecast.list[32] ? getWeatherImage(forecast.list[32].weather[0].main) : ''}
-            date={forecast && forecast.list[32] ? new Date(forecast.list[32].dt * 1000).toLocaleDateString() : ''}
-            weathertype={forecast && forecast.list[32] ? forecast.list[32].weather[0].main : ''}
-            nextdaytemp={forecast && forecast.list[32] ? `${Math.floor(forecast.list[32].main.temp)} °C` : ''}
+            image={forecast && forecast.list[29] ? getWeatherImage(forecast.list[29].weather[0].main) : ''}
+            date={forecast && forecast.list[29] ? new Date(forecast.list[29].dt * 1000).toLocaleDateString() : ''}
+            weathertype={forecast && forecast.list[29] ? forecast.list[29].weather[0].main : ''}
+            nextdaytemp={forecast && forecast.list[29] ? `${Math.floor(forecast.list[29].main.temp)} °C` : ''}
           />
         </div>
       </div>

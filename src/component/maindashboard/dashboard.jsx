@@ -7,7 +7,7 @@ import aqi from '../../assets/aqi.png'
 import clear from '../../assets/sunny.png';
 import humidity from '../../assets/humidity.png'
 import rain from '../../assets/rain.png';
-import sunny from '../../assets/sunny.png';
+// import sunny from '../../assets/sunny.png';
 import snow from '../../assets/snow.png';
 import thunder from '../../assets/thunder.png';
 import windspeed from '../../assets/windspeed1.png';

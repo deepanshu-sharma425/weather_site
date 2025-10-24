@@ -6,24 +6,19 @@ import Dashboard from './component/maindashboard/dashboard';
 function App() {
   const [selectedcity, setselectedcity] = useState('');
   const [loading, setLoading] = useState(false);
-
   function handlecitychange(cityname) {
     setselectedcity(cityname);
   }
-
   return (
     <div className='body'>
-
       {loading && (
         <div className="fullscreen-loader">
           <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." className="loading-spinner" />
         </div>
       )}
-
       <Header oncitychange={handlecitychange} />
       <Dashboard city={selectedcity} setLoading={setLoading} />
     </div>
   );
 }
-
 export default App;

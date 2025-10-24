@@ -51,11 +51,5 @@ const Weatherapp=()=>{
   </div>:city!='' && <p>entered city does not exist</p>}
     </>
   )
-
-
-
-
-
-
 }
 export default Weatherapp

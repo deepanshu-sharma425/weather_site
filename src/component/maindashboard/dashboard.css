@@ -469,3 +469,9 @@
     }
     
 }
+@media (max-width:903px) {
+    .moreinfoweather{
+        margin: 10px;
+    }
+    
+}

@@ -24,48 +24,35 @@ import temp from '../../assets/temp.png';
 function Dashboard({ city, setLoading }) {
   const [weather, setWeather] = useState(null);
   const [forecast, setforecast] = useState(null)
-
-
-
-
-
   const [error, setError] = useState('');
   const apiKey = 'b1d0579d30c58c38b4ab1543c5044ebe';
   const [pollution, setpollution] = useState(null)
-
   useEffect(() => {
     if (city === '') return;
-
     const dataFetching = async () => {
       try {
         setLoading(true);
-
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         );
         const data = await response.json();
-
         if (data.cod !== 200) {
           setWeather(null);
           setError('City not found');
           setLoading(false);
+          console.log(data);
           return;
         }
-
         setWeather(data);
         setError('');
-
         const { lat, lon } = data.coord;
-
         const weatherforecastres = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
         const weatherforecastdata = await weatherforecastres.json();
         setforecast(weatherforecastdata);
         console.log(weatherforecastdata)
-
         const pollutiondatares = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`);
         const pollutionresdata = await pollutiondatares.json();
         setpollution(pollutionresdata);
-
       } catch (err) {
         console.error('Problem while fetching API', err);
         setError('Something went wrong');
@@ -73,21 +60,18 @@ function Dashboard({ city, setLoading }) {
         setLoading(false);
       }
     };
-
     dataFetching();
   }, [city]);
-
   function getWeatherImage(condition) {
-    if (!condition) return defaultImg;
+    if (!condition) return cloudy;
     const main = condition.toLowerCase();
-
     if (main.includes('cloud')) return cloudy;
     if (main.includes('rain')) return rain;
     if (main.includes('clear')) return clear;
     if (main.includes('snow')) return snow;
     if (main.includes('thunder')) return thunder;
 
-    return defaultImg;
+    return cloudy;
 
 
 

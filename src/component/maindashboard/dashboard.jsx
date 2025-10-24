@@ -74,6 +74,9 @@ function Dashboard({ city, setLoading }) {
     return cloudy;
 
 
+    
+
+
 
   }
   function aqihandle(aqi) {
